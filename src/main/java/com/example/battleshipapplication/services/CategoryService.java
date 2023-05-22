@@ -26,7 +26,6 @@ public class CategoryService {
     @PostConstruct
     private void postConstruct() {
         if (this.categoryRepository.count() == 0) {
-
             this.categoryRepository.saveAllAndFlush(
                     Arrays.stream(CategoryType.values())
                     .map(enumValue -> CategoryModel.builder()

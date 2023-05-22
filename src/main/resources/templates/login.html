@@ -10,28 +10,7 @@
 </head>
 <body class="body-main">
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top  rounded">
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Register</a>
-                    </li>                
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Add Ship</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Logout</a>
-                    </li>
-            </ul>
-            <img width="50px" src="/images/ufo.png" alt="Ufo image">
-        </div>
-    </nav>
+    <nav th:replace="~{/fragments/navbar}"></nav>
 </header>
 <main role="main">
     <div class="jumbotron">
@@ -43,9 +22,13 @@
             <div class="col-md-6">
                 <div class="container bg-blur rounded p-5 mt-5 w-75 ">
 
-                    <form action="/" method=""
+                    <form th:action="@{/auth/login}"
+                          th:method="POST"
+                          th:object="${userLoginModel}"
                           class="text-center text-light">
-                        <h3 class="mt-5 text-center">
+
+                        <h3 th:if="${#fields.hasErrors('*')}"
+                            class="mt-5 text-center">
                             <strong class="rounded  pl-3 text-danger">Enter valid
                                 username and
                                 password</strong>
@@ -55,8 +38,11 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
                                        id="username"
-                                       aria-describedby="usernameHelpInline" placeholder="Username">
-                                <small
+                                       name="username"
+                                       aria-describedby="usernameHelpInline"
+                                       placeholder="Username"
+                                       th:value="*{username}">
+                                <small th:if="${#fields.hasErrors('*')}"
                                        id="usernameHelpInline"
                                        class="bg-danger text-light rounded">
                                     Username length must be between 3 and 10 characters.
@@ -69,8 +55,11 @@
                                 <input type="password"
                                        class="form-control"
                                        id="password"
-                                       aria-describedby="passwordHelpInline" placeholder="Password">
-                                <small
+                                       name="password"
+                                       aria-describedby="passwordHelpInline"
+                                       placeholder="Password"
+                                       th:value="*{password}">
+                                <small th:if="${#fields.hasErrors('*')}"
                                        id="passwordHelpInline"
                                        class="bg-danger text-light rounded">
                                     Password length must be more than 3 characters.

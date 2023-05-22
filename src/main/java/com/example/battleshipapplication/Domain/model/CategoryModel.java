@@ -1,6 +1,5 @@
 package com.example.battleshipapplication.Domain.model;
 
-import com.example.battleshipapplication.Domain.entities.Category;
 import com.example.battleshipapplication.Domain.enums.CategoryType;
 import lombok.*;
 
@@ -16,5 +15,4 @@ public class CategoryModel {
     private CategoryType name;
 
     private String description;
-
 }

@@ -17,12 +17,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     @Column(unique = true)
     private CategoryType name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
-
-
 }
