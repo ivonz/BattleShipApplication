@@ -11,8 +11,6 @@ import lombok.*;
 public class CategoryModel {
 
     private Long id;
-
     private CategoryType name;
-
     private String description;
 }

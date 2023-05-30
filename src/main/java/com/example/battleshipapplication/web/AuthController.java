@@ -71,6 +71,12 @@ public class AuthController {
         return "redirect:/home";
     }
 
+    @GetMapping("/logout")
+    public String getLogout() {
+        this.authService.logoutUser();
+        return "redirect:/";
+    }
+
     //model attributes (se hace para que este atributo se añada automáticamente en nuestro getView porque le pondremos th:object y así no peta)
     @ModelAttribute("userRegisterModel")
     public UserRegisterModel userRegisterModel() {

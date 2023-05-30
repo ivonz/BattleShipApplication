@@ -36,4 +36,8 @@ public class CategoryService {
                     .toList());
         }
     }
+
+    public CategoryModel findByName(CategoryType name) {
+        return this.modelMapper.map(this.categoryRepository.findByName(name).orElseThrow(), CategoryModel.class);
+    }
 }
